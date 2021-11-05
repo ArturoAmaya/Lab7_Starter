@@ -123,6 +123,36 @@ function createRecipeCards() {
    * After this step you should see multiple cards rendered like the end of the last
    * lab
    */
+  const recipeCards = [];
+  for (let i = 1; i<recipes.length; i++){
+    const recipeCardLoop = document.createElement('recipe-card');
+    recipeCardLoop.data = recipeData[recipes[i]];
+    const pageLoop = recipeData[recipes[i]]['page-name'];
+    router.addPage(pageLoop, function() {
+      document.querySelector('.section--recipe-cards').classList.remove('shown');
+      document.querySelector('.section--recipe-expand').classList.add('shown');
+      document.querySelector('recipe-expand').data = recipeData[recipes[i]];
+    });
+    bindRecipeCard(recipeCardLoop, pageLoop);
+    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCardLoop);
+    
+    /*
+    recipeCards[i] = document.createElement('recipe-card');
+    recipeCards[i].data = recipeData[recipes[i]];
+    const pageLoop = recipeData[recipes[i]]['page-name'];
+    router.addPage(pageLoop, function() {
+      document.querySelector('.section--recipe-cards').classList.remove('shown');
+      document.querySelector('.section--recipe-expand').classList.add('shown');
+      document.querySelector('recipe-expand').data = recipeData[recipes[i]];
+    });
+    if (i>2){
+      recipeCards[i].classList.add('hidden');
+    }
+    bindRecipeCard(recipeCards[i],pageLoop);
+    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCards[i]);*/
+  }
+
+
 }
 
 /**
