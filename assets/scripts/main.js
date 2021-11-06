@@ -238,4 +238,13 @@ function bindPopstate() {
    * so your navigate() function does not add your going back action to the history,
    * creating an infinite loop
    */
+  window.addEventListener('popstate', e => {
+    console.log('logging e state '+ e.state);
+    if(e.state){
+      // if it exists, navigate there
+      router.navigate(e.state, true);
+    } else {
+      router.navigate('home', true);
+    }
+  })
 }
