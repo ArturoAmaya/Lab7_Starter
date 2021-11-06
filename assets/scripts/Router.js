@@ -38,7 +38,7 @@ export class Router {
      * router instance using the 'this' keyword. Substitute 'home' for the variable
      * page
      */
-    this.page = pageFunc;
+    this[page] = pageFunc;
   }
 
   /**
@@ -66,7 +66,8 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
-    if (!this.page){
+
+    if (!this[page]){
       console.log("error");
       return;
     } else {
@@ -83,7 +84,7 @@ export class Router {
         history.pushState(window.location.hash, '', window.location + window.location.hash);
       }
       console.log ('boutta call the function for the page');
-      this.page();
+      this[page]();
     }
   }
 }
