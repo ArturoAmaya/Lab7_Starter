@@ -77,11 +77,15 @@ export class Router {
       } else {
         hash = '#' + page;
       }
-      console.log(hash);
-      console.log(window.location.hash);
+      console.log('the future hash is ' + hash);
+      console.log('the current hash is ' + window.location.hash);
       if (!statePopped && window.location.hash != hash){
         console.log('pushing...');
-        history.pushState(window.location.hash, '', window.location + window.location.hash);
+        // this was a tricky one. window.location is an object, but .href is a string
+        // thus it can be split into two parts, the core url and the hash.
+        // we need the core url, sans any hash that may exist
+        const myarray = window.location.href.split("#");
+        history.pushState(window.location.hash, '', myarray[0] + hash);
       }
       console.log ('boutta call the function for the page');
       this[page]();
