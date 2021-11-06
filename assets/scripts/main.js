@@ -25,9 +25,10 @@ const router = new Router(function () {
    * This will only be two single lines
    * If you did this right, you should see just 1 recipe card rendered to the screen
    */
-  const secshon = document.querySelector('.section--recipe-cards');
+  console.log('were boutta do the home funct');
+  const secshon = document.querySelector('section.section--recipe-cards');
   secshon.classList.add("shown");
-  const secshon2 = document.querySelector('.section--recipe-expand');
+  const secshon2 = document.querySelector('section.section--recipe-expand');
   secshon2.classList.remove("shown");
 });
 
@@ -208,6 +209,14 @@ function bindEscKey() {
    * if the escape key is pressed, use your router to navigate() to the 'home'
    * page. This will let us go back to the home page from the detailed page.
    */
+
+  document.addEventListener('keydown', e => {
+    if (e.code=="Escape"){
+      // navigate to home page
+      console.log(router);
+      router.navigate('home');
+    }
+  })
 }
 
 /**

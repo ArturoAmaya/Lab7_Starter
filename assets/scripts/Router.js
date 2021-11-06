@@ -76,10 +76,13 @@ export class Router {
       } else {
         hash = '#' + page;
       }
-
+      console.log(hash);
+      console.log(window.location.hash);
       if (!statePopped && window.location.hash != hash){
-        history.pushState(window.location.hash, window.location + window.location.hash);
+        console.log('pushing...');
+        history.pushState(window.location.hash, '', window.location + window.location.hash);
       }
+      console.log ('boutta call the function for the page');
       this.page();
     }
   }
