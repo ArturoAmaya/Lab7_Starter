@@ -134,6 +134,9 @@ function createRecipeCards() {
       document.querySelector('.section--recipe-expand').classList.add('shown');
       document.querySelector('recipe-expand').data = recipeData[recipes[i]];
     });
+    if (i>2){
+      recipeCardLoop.classList.add('hidden');
+    }
     bindRecipeCard(recipeCardLoop, pageLoop);
     document.querySelector('.recipe-cards--wrapper').appendChild(recipeCardLoop);
     
@@ -240,9 +243,10 @@ function bindPopstate() {
    */
   window.addEventListener('popstate', e => {
     console.log('logging e state '+ e.state);
-    if(e.state){
+    if(window.location.hash){
       // if it exists, navigate there
-      router.navigate(e.state, true);
+      const arr =window.location.hash.split("#");
+      router.navigate(arr[1], true);
     } else {
       router.navigate('home', true);
     }
