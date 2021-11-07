@@ -33,6 +33,9 @@ const router = new Router(function () {
 });
 
 window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('load', (event) => {
+  console.log('page is fully loaded');
+});
 
 // Initialize function, begins all of the JS code in this file
 async function init() {
@@ -244,7 +247,8 @@ function bindPopstate() {
   window.addEventListener('popstate', e => {
     console.log('logging e state '+ e.state);
     if(window.location.hash){
-      // if it exists, navigate there
+      // if it exists, navigate there'
+      console.log("YO");
       const arr =window.location.hash.split("#");
       router.navigate(arr[1], true);
     } else {
