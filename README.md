@@ -1,3 +1,3 @@
 # Lab 7 - Starter Code
-
--[] Need to make sure the URL stuff works
+Arturo Amaya
+https://arturoamaya.github.io/Lab7_Starter/
