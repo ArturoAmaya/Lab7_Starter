@@ -84,8 +84,9 @@ export class Router {
         // this was a tricky one. window.location is an object, but .href is a string
         // thus it can be split into two parts, the core url and the hash.
         // we need the core url, sans any hash that may exist
+        // NOTE, used to pass window.location to state so state was always one behind.
         const myarray = window.location.href.split("#");
-        history.pushState(window.location.hash, '', myarray[0] + hash);
+        history.pushState(page, '', myarray[0] + hash);
       }
       console.log ('boutta call the function for the page');
       this[page]();

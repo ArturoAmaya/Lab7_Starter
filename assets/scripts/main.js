@@ -246,11 +246,13 @@ function bindPopstate() {
    */
   window.addEventListener('popstate', e => {
     console.log('logging e state '+ e.state);
-    if(window.location.hash){
+    if(history.state){
       // if it exists, navigate there'
       console.log("YO");
-      const arr =window.location.hash.split("#");
-      router.navigate(arr[1], true);
+      //const arr =window.location.hash.split("#");
+      //router.navigate(arr[1], true);
+
+      router.navigate(history.state,true);
     } else {
       router.navigate('home', true);
     }
